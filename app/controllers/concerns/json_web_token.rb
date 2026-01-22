@@ -13,4 +13,3 @@ module JsonWebToken
     nil
   end
 end
-

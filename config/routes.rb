@@ -3,10 +3,8 @@ Rails.application.routes.draw do
   post "/login", to: "auth#login"
 
   resources :projects do
-    resources :tasks, only: [:create, :index]
+    resources :tasks, shallow: true
   end
 
-  resources :tasks, only: [:update]
-  
-  root to: proc { [200, {}, ["Task Manager Api is Running"]]}
+  root to: proc { [ 200, {}, [ "Task Manager Api is Running" ] ] }
 end

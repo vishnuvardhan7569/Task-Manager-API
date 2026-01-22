@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_action :set_project, only: :show
+
   def index
     render json: @current_user.projects
   end
@@ -9,14 +11,16 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    project = @current_user.projects.find(params[:id])
-    render json: project
+    render json: @project
   end
 
   private
+
+  def set_project
+    @project = @current_user.projects.find(params[:id])
+  end
 
   def project_params
     params.permit(:name, :description)
   end
 end
-

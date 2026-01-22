@@ -1,21 +1,21 @@
 default: &default
   adapter: mysql2
   encoding: utf8mb4
-  max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
   database: task_manager_api_development
-  username: railsuser
-  password: rails_password
-  host: localhost
+  username: <%= ENV["MYSQL_USER"] %>
+  password: <%= ENV["MYSQL_PASSWORD"] %>
+  host: <%= ENV["MYSQL_HOST"] %>
 
 test:
   <<: *default
   database: task_manager_api_test
-  username: railsuser
-  password: rails_password
-  host: localhost
+  username: <%= ENV["MYSQL_USER"] %>
+  password: <%= ENV["MYSQL_PASSWORD"] %>
+  host: <%= ENV["MYSQL_HOST"] %>
 
 production:
   url: <%= ENV["DATABASE_URL"] %>

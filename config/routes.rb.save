@@ -1,0 +1,12 @@
+Rails.application.routes.draw do
+  post "/signup", to: "auth#signup"
+  post "/login", to: "auth#login"
+
+  resources :projects do
+    resources :tasks, only: [:create, :index]
+  end
+
+  resources :tasks, only: [:update]
+end
+
+root to: proc { [200, {}, ["Task Manager API is running"]] }
