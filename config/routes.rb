@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "/me", to: "users#me"
 
   resources :projects do
-    resources :tasks, shallow: true
+    resources :tasks
   end
 
   root to: proc { [ 200, {}, [ "Task Manager Api is Running" ] ] }

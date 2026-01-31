@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require "rubygems"
-require "bundler/setup"
-
-load Gem.bin_path("thruster", "thrust")
+# The `thruster` gem is not installed in this environment.
+# Install `thruster` (add it back to your Gemfile) to enable the puma acceleration tool.
+puts "thruster is not available. Install the 'thruster' gem to enable the puma acceleration tool."
+exit 0

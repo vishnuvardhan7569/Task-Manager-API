@@ -33,7 +33,8 @@ GET /projects/:id
 ### Tasks
 POST /projects/:project_id/tasks  
 GET /projects/:project_id/tasks  
-PATCH /tasks/:id  
+PATCH /projects/:project_id/tasks/:id  
+DELETE /projects/:project_id/tasks/:id  
 
 ## Authentication
 All protected routes require:

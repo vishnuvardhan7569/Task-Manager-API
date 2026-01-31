@@ -26,13 +26,7 @@ class AuthController < ApplicationController
 
   def auth_response(user)
     {
-      token: encode_token(user_id: user.id),
-      user: {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        gender: user.gender
-      }
+      token: encode_token(user_id: user.id)
     }
   end
 end
