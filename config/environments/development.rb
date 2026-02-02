@@ -38,9 +38,13 @@ Rails.application.configure do
   # Set localhost to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 
-  # Use letter_opener for email previews in development
-  config.action_mailer.delivery_method = :letter_opener
-  config.action_mailer letter_opener_options: { location: Rails.root.join("tmp", "letters") }
+  # Emails are intercepted by DevelopmentMailInterceptor and redirected to MAIL_INTERCEPTOR_ADDRESS
+  # See app/interceptors/development_mail_interceptor.rb for details
+
+  # File delivery method - saves emails to tmp/mails for viewing
+  # Emails are intercepted and redirected before delivery
+  config.action_mailer.delivery_method = :file
+  config.action_mailer.file_settings = { location: Rails.root.join("tmp", "mails") }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
